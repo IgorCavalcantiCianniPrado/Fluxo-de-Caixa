@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "F9Ls/ejPw+RSxh5RpADVZQeFHrWX0b+VWl7vs+fjp0QliaAiLVBP2kGmatDLhqs4kzCqax7zpX8ySpQMom0YtQ==",
+  "success": true,
+  "projectFilePath": "C:\\Futuro D dois pontos\\Case Mttechne\\FluxoCaixa\\FluxoCaixa\\FluxoCaixa\\FluxoCaixa.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\igorc\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+  ],
+  "logs": []
+}
