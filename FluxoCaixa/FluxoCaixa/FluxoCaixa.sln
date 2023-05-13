@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa", "FluxoCaixa\Fl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relatorio", "Relatorio\Relatorio.csproj", "{F1707F11-AE72-486A-BCCC-CC3DC477D605}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Worker\Worker.csproj", "{0425A6AB-EC7D-4881-B699-173EF56BCC5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F1707F11-AE72-486A-BCCC-CC3DC477D605}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1707F11-AE72-486A-BCCC-CC3DC477D605}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1707F11-AE72-486A-BCCC-CC3DC477D605}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0425A6AB-EC7D-4881-B699-173EF56BCC5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0425A6AB-EC7D-4881-B699-173EF56BCC5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0425A6AB-EC7D-4881-B699-173EF56BCC5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0425A6AB-EC7D-4881-B699-173EF56BCC5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
