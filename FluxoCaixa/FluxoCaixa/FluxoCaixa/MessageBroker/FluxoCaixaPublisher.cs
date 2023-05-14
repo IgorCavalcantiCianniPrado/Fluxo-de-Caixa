@@ -9,7 +9,8 @@ namespace FluxoCaixa.MessageBroker
     {
         public async Task Publish(LancamentoParaEnvio message) 
         {
-            using (var bus = RabbitHutch.CreateBus("host=localhost"))
+            using (var bus = RabbitHutch.CreateBus("host=rabbitmqservice"))
+            //using (var bus = RabbitHutch.CreateBus("host=localhost"))
             {
                 bus.PubSub.Publish(message);
             }

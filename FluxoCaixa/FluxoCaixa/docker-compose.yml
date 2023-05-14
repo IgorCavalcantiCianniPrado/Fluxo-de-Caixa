@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+    fluxocaixaapiservice:
+        build:
+            context: .
+            dockerfile: FluxoCaixa/Dockerfile
+        ports:
+            - "5000:80"
+        depends_on:
+            - rabbitmqservice
+            
+    workerservice:
+        build:
+            context: . 
+            dockerfile: Worker/Dockerfile
+        depends_on:
+            - rabbitmqservice
+            - mongodbservice
+        restart: always      
+    
+    relatorioservice:
+        build:
+            context: .
+            dockerfile: Relatorio/Dockerfile
+        ports:
+            - "5001:80"
+        depends_on:
+            - mongodbservice
+    
+    rabbitmqservice:
+        image: rabbitmq:3-management    
+        ports:
+            - "5672:5672"
+            - "15672:15672"        
+              
+    mongodbservice:
+        image: mongo    
+        ports:
+            - "27017:27017"     
+            
+        

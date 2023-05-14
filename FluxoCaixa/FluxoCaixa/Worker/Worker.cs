@@ -2,12 +2,10 @@ using EasyNetQ;
 using FluxoCaixa.DTOs;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System.Threading;
-using System.Threading.Tasks;
-
-using MongoDB;
 using MongoDB.Driver;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Worker
 {
@@ -22,18 +20,24 @@ namespace Worker
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            using (var bus = RabbitHutch.CreateBus("host=localhost"))
+            Console.WriteLine("Iniciou o Worker!!!");
+
+            using (var bus = RabbitHutch.CreateBus("host=rabbitmqservice"))
+            //using (var bus = RabbitHutch.CreateBus("host=localhost"))
             {
                 bus.PubSub.Subscribe<LancamentoParaEnvio>("fluxoCaixa", Consumer);
-                Console.ReadLine();
+                Thread.Sleep(Timeout.Infinite);
             }
         }
 
         public static void Consumer(LancamentoParaEnvio lancamentoParaEnvio)
         {
+            Console.WriteLine("Consumiu a msg!!!");
+
             //IMongoCollection<LancamentoParaEnvio> mongoCollection;
 
-            var client = new MongoClient("mongodb://localhost:27017");
+            var client = new MongoClient("mongodb://mongodbservice");
+            //var client = new MongoClient("mongodb://localhost");
 
             var database = client.GetDatabase("FluxoCaixa");
 
