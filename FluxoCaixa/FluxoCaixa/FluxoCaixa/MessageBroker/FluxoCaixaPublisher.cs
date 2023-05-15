@@ -1,7 +1,5 @@
-﻿using FluxoCaixa.DTOs;
-using System;
-using System.Threading.Tasks;
-using EasyNetQ;
+﻿using EasyNetQ;
+using FluxoCaixa.DTOs;
 
 namespace FluxoCaixa.MessageBroker
 {
@@ -16,24 +14,7 @@ namespace FluxoCaixa.MessageBroker
 
         public void Publish(LancamentoParaEnvio message)
         {
-            //using (var bus = RabbitHutch.CreateBus("host=rabbitmqservice"))
-            //using (var bus = RabbitHutch.CreateBus("host=localhost"))
-            //{
             bus.PubSub.Publish(message);
-            //bus.Dispose();
-            //}
         }
     }
-
-    //public class FluxoCaixaPublisher : IPublisher
-    //{
-    //    public async Task Publish(LancamentoParaEnvio message) 
-    //    {
-    //        using (var bus = RabbitHutch.CreateBus("host=rabbitmqservice"))
-    //        //using (var bus = RabbitHutch.CreateBus("host=localhost"))
-    //        {
-    //            bus.PubSub.Publish(message);
-    //        }
-    //    }
-    //}
 }

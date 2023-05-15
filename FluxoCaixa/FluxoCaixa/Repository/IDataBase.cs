@@ -1,12 +1,10 @@
 ﻿using FluxoCaixa.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Worker.Repository
+namespace Repository
 {
     public interface IDataBase
     {
         public void Insert(LancamentoParaEnvio lancamentoParaEnvio);
+        public double GetSaldoConsolidado();
     }
 }

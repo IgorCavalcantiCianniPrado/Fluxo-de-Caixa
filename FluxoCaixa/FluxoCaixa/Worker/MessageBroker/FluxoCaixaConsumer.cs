@@ -1,6 +1,6 @@
 ﻿using EasyNetQ;
 using FluxoCaixa.DTOs;
-using Worker.Repository;
+using Repository;
 
 namespace Worker.MessageBroker
 {

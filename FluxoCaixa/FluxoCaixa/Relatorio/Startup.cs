@@ -1,16 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Repository;
 
 namespace Relatorio
 {
@@ -27,6 +21,10 @@ namespace Relatorio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            var dataBase = GetDataBase(Configuration);
+
+            services.AddSingleton(dataBase);
 
             services.AddSwaggerGen(c =>
             {
@@ -59,6 +57,13 @@ namespace Relatorio
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SaldoConsolidadoApi");
             });
+        }
+
+        private static IDataBase GetDataBase(IConfiguration configuration)
+        {
+            IDataBase dataBase = new Mongo(configuration);
+
+            return dataBase;
         }
     }
 }
