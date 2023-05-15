@@ -22,8 +22,10 @@ namespace Repository
             if (dataBaseMinimalDataArg.CollectionName is null)
                 throw new Exception("A CollectionName não pode ser nulo!");
 
-            ConfigureDataBase(configuration);
             dataBaseMinimalData = dataBaseMinimalDataArg;
+
+            ConfigureDataBase(configuration);
+            
         }
 
         public void Insert(LancamentoParaEnvio lancamentoParaEnvio)
