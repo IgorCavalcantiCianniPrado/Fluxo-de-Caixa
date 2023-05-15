@@ -33,4 +33,6 @@ E no endereço com a porta 5001, use o seguinte endpoint:
 
 ![image](https://github.com/IgorCavalcantiCianniPrado/CaseMttechne/assets/86272097/e0e69a65-695a-4ce1-97ce-f2dcb974f854)
 
+**Obs.: Para se visualizar com mais detalhes os dados dos produtos fictícios, verifique os registros no banco de dados MongoDB utilizado. Você verá registros parecidos com o seguinte:**
 
+![image](https://github.com/IgorCavalcantiCianniPrado/CaseMttechne/assets/86272097/0efa1079-8c04-49b0-848c-c8d293ecb686)
