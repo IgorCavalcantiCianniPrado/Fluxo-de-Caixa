@@ -26,11 +26,19 @@ Após a execução do comando, os seguintes serviços devem ficar de pé:
 # Testar o Funcionamento do Sistema
 Para se testar o funcionamento do Case técnico, basta utilizar o Swagger nos serviços **fluxocaixaapiservice** e **relatorioservice**. Para isto, considerando a configuração atual de portas do **docker-compose.yml**, abra no seu browser respectivamente os endereços **http://localhost:5000/Swagger** e **http://localhost:5001/Swagger**. 
 
-No endereço com a porta 5000 use o seguinte endpoint:
+No endereço com a porta 5000, realize a autenticação (usuário: IgorPrado, senha:123456):
+
+![image](https://github.com/IgorCavalcantiCianniPrado/CaseMttechne/assets/86272097/25c69591-9f4c-4994-a306-ae11e9c620ad)
+ 
+E use o seguinte endpoint:
 
 ![image](https://github.com/IgorCavalcantiCianniPrado/CaseMttechne/assets/86272097/60c4e9f2-9d36-4e44-8496-c460f52dd37e)
 
-E no endereço com a porta 5001, use o seguinte endpoint:
+No endereço com a porta 5001, realize a autenticação (usuário: IgorPrado, senha:123456):
+
+![image](https://github.com/IgorCavalcantiCianniPrado/CaseMttechne/assets/86272097/f9a43e6e-13ce-440a-acfa-23ea97659de0)
+
+E use o seguinte endpoint:
 
 ![image](https://github.com/IgorCavalcantiCianniPrado/CaseMttechne/assets/86272097/e0e69a65-695a-4ce1-97ce-f2dcb974f854)
 
