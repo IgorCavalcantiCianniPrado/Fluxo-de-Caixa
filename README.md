@@ -6,3 +6,6 @@ A ideia neste case é basicamente (considerando as instruções do mesmo e minha
 Obs.: há uma simplicidade nos conceitos pela limitação de tempo e obviamente pelo caráter fictício do case. 
 
 
+# Rodar Localmente o Projeto
+Para se rodar localmente este projeto, utilize o arquivo docker-compose, executando o seguinte comando no diretório onde se encontra o arquivo:
+**docker-compose up**
