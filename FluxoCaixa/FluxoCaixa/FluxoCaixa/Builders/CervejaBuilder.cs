@@ -6,16 +6,6 @@ namespace FluxoCaixa.Builders
 {
     public class CervejaBuilder
     {
-        /*
-         
-            public abstract class Produto
-    {
-    }
-         
-         */
-
-
-
         private Cerveja cerveja;
 
         public CervejaBuilder() 
