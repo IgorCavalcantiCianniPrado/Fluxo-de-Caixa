@@ -17,8 +17,4 @@
   <ItemGroup>
     <ProjectReference Include="..\FluxoCaixa\FluxoCaixa.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
 </Project>

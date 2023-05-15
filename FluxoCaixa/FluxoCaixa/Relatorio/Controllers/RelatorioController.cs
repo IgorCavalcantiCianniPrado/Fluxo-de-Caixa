@@ -1,6 +1,7 @@
 ﻿using FluxoCaixa.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System.Linq;
 
@@ -10,16 +11,27 @@ namespace Relatorio.Controllers
     [ApiController]
     public class RelatorioController : ControllerBase
     {
+        private readonly IConfiguration configuration;
+
+        public RelatorioController(IConfiguration configuration) 
+        { 
+            this.configuration = configuration;
+        }
+
         [Route("SaldoConsolidado")]
         [HttpGet]
         public IActionResult SaldoConsolidado()
         {
-            var client = new MongoClient("mongodb://mongodbservice");
+            var dataBaseConnectionString = configuration.GetConnectionString("DataBase");
+            var dataBase = configuration.GetSection("DataBase:Name").Value;
+            var collection = configuration.GetSection("DataBase:CollectionName").Value;
+
+            var client = new MongoClient(dataBaseConnectionString);
             //var client = new MongoClient("mongodb://localhost");
 
-            var database = client.GetDatabase("FluxoCaixa");
+            var database = client.GetDatabase(dataBase);
 
-            var produto = database.GetCollection<LancamentoParaEnvio>("CreditoDebito");
+            var produto = database.GetCollection<LancamentoParaEnvio>(collection);
 
             var fields = Builders<LancamentoParaEnvio>.Projection.Include(p => p.valorTotal);
 

@@ -7,6 +7,8 @@ services:
             dockerfile: FluxoCaixa/Dockerfile
         ports:
             - "5000:80"
+        environment:
+            - ConnectionStrings__MessageBroker=host=rabbitmqservice
         depends_on:
             - rabbitmqservice
             
@@ -14,6 +16,11 @@ services:
         build:
             context: . 
             dockerfile: Worker/Dockerfile
+        environment:
+            - ConnectionStrings__MessageBroker=host=rabbitmqservice
+            - ConnectionStrings__DataBase=mongodb://mongodbservice
+            - DataBase__Name=FluxoCaixa
+            - DataBase__CollectionName=CreditoDebito
         depends_on:
             - rabbitmqservice
             - mongodbservice
@@ -25,6 +32,10 @@ services:
             dockerfile: Relatorio/Dockerfile
         ports:
             - "5001:80"
+        environment:
+            - ConnectionStrings__DataBase=mongodb://mongodbservice
+            - DataBase__Name=FluxoCaixa
+            - DataBase__CollectionName=CreditoDebito
         depends_on:
             - mongodbservice
     

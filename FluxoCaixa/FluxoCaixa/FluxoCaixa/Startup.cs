@@ -1,15 +1,10 @@
+using EasyNetQ;
+using FluxoCaixa.MessageBroker;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FluxoCaixa
 {
@@ -26,6 +21,8 @@ namespace FluxoCaixa
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            ConfigureMessageBroker(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +43,15 @@ namespace FluxoCaixa
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void ConfigureMessageBroker(IServiceCollection services)
+        {
+            var connectionString = Configuration.GetConnectionString("MessageBroker");
+
+            var bus = RabbitHutch.CreateBus(connectionString);
+
+            services.AddScoped<IPublisher>(service => new FluxoCaixaPublisher(bus));
         }
     }
 }

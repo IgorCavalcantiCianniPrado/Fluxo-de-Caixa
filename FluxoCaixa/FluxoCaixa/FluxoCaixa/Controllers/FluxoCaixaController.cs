@@ -13,9 +13,16 @@ namespace FluxoCaixa.Controllers
     [ApiController]
     public class FluxoCaixaController : ControllerBase
     {
+        private readonly IPublisher publisher;
+
+        public FluxoCaixaController(IPublisher publisher) 
+        {
+            this.publisher = publisher;
+        }
+
         [HttpPost]
         [Route("Lancamento")]
-        public async Task<IActionResult> Lancamento(Lancamento lancamento)
+        public IActionResult Lancamento(Lancamento lancamento)
         {
             try
             {
@@ -29,15 +36,18 @@ namespace FluxoCaixa.Controllers
                 var valorTotalLancamento = new Calculadora().CalcularCreditoDebito(lancamento);
 
                 //var lancamentoParaEnvio = new LancamentoParaEnvio(produto, valorTotalLancamento, lancamento.quantidade);
-                var lancamentoParaEnvio = new LancamentoParaEnvio();
-                lancamentoParaEnvio.produto = produto;
-                lancamentoParaEnvio.valorTotal = valorTotalLancamento;
-                lancamentoParaEnvio.quantidade = lancamento.quantidade;
-
+                var lancamentoParaEnvio = new LancamentoParaEnvio
+                {
+                   produto = produto,
+                   valorTotal = valorTotalLancamento,
+                   quantidade = lancamento.quantidade
+                };
 
                 //Aqui publicar no RabbitMQ o "lancamentoParaEnviar".
-                var publisher = new FluxoCaixaPublisher();
-                await publisher.Publish(lancamentoParaEnvio);
+                //var publisher = new FluxoCaixaPublisher();
+                //await publisher.Publish(lancamentoParaEnvio);
+
+                publisher.Publish(lancamentoParaEnvio);
             }
             catch(Exception ex)
             {
