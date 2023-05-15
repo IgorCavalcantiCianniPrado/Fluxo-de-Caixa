@@ -1,2 +1,8 @@
 # CaseMttechne
-Repositório para solução do Case passado pela empresa Mttechne
+Projeto que tem como objetivo realizar um case técnico da empresa Mttechne. 
+
+A ideia neste case é basicamente (considerando as instruções do mesmo e minha "liberdade de criação") ter um sistema básico de um empório que vende Cervejas e Vinhos, de maneira que eu registro cada lançamento realizado como um Crédito (venda, que resulta em entrada de dinheiro) ou como um Débito (compra, que resulta em saída de dinheiro).
+
+Obs.: há uma simplicidade nos conceitos pela limitação de tempo e obviamente pelo caráter fictício do case. 
+
+
