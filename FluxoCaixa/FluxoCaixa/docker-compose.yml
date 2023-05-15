@@ -9,6 +9,11 @@ services:
             - "5000:80"
         environment:
             - ConnectionStrings__MessageBroker=host=rabbitmqservice
+            - Jwt__Key=12344567654325676
+            - Jwt__Issuer=AlgumIssuer
+            - Jwt__Audience=AlgumaAudience
+            - Login__Usuario=IgorPrado
+            - Login__Senha=123456
         depends_on:
             - rabbitmqservice
             
@@ -36,6 +41,11 @@ services:
             - ConnectionStrings__DataBase=mongodb://mongodbservice
             - DataBase__Name=FluxoCaixa
             - DataBase__CollectionName=CreditoDebito
+            - Jwt__Key=12344567654325676
+            - Jwt__Issuer=AlgumIssuer
+            - Jwt__Audience=AlgumaAudience
+            - Login__Usuario=IgorPrado
+            - Login__Senha=123456
         depends_on:
             - mongodbservice
     

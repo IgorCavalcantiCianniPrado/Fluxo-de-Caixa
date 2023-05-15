@@ -2,6 +2,7 @@
 using FluxoCaixa.Factories;
 using FluxoCaixa.MessageBroker;
 using FluxoCaixa.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FluxoCaixa.Controllers
@@ -17,6 +18,7 @@ namespace FluxoCaixa.Controllers
             this.publisher = publisher;
         }
 
+        [Authorize]
         [HttpPost]
         [Route("Lancamento")]
         public IActionResult Lancamento(Lancamento lancamento)

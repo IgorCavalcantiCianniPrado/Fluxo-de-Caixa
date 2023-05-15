@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Repository;
 
@@ -9,19 +10,20 @@ namespace Relatorio.Controllers
     public class RelatorioController : ControllerBase
     {
         private readonly IConfiguration configuration;
-        private readonly IDataBase database;
+        private readonly IDataBase dataBase;
 
         public RelatorioController(IConfiguration configuration, IDataBase dataBase) 
         { 
             this.configuration = configuration;
-            this.database = dataBase;
+            this.dataBase = dataBase;
         }
 
+        [Authorize]
         [Route("SaldoConsolidado")]
         [HttpGet]
         public IActionResult SaldoConsolidado()
         {          
-            var saldoConsolidado = database.GetSaldoConsolidado();
+            var saldoConsolidado = dataBase.GetSaldoConsolidado();
 
             return Ok("Saldo Consolidado: " + saldoConsolidado);
         }
