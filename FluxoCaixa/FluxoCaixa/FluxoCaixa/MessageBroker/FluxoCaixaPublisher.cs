@@ -1,5 +1,6 @@
 ﻿using EasyNetQ;
 using FluxoCaixa.DTOs;
+using System;
 
 namespace FluxoCaixa.MessageBroker
 {
@@ -8,7 +9,10 @@ namespace FluxoCaixa.MessageBroker
         private readonly IBus bus;
 
         public FluxoCaixaPublisher(IBus bus) 
-        { 
+        {
+            if (bus is null)
+                throw new Exception("O bus não pode ser nulo!");
+
             this.bus = bus;
         }
 

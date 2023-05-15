@@ -1,3 +1,4 @@
+using FluxoCaixa.DTOs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -115,7 +116,14 @@ namespace Relatorio
 
         private static IDataBase GetDataBase(IConfiguration configuration)
         {
-            IDataBase dataBase = new Mongo(configuration);
+            var dataBaseMinimalData = new DataBaseMinimalData
+            {
+                ConnectionString = configuration.GetConnectionString("DataBase"),
+                DataBase = configuration.GetSection("DataBase:Name").Value,
+                CollectionName = configuration.GetSection("DataBase:CollectionName").Value
+            };
+
+            IDataBase dataBase = new Mongo(configuration, dataBaseMinimalData);
 
             return dataBase;
         }

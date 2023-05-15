@@ -1,6 +1,7 @@
 ﻿using FluxoCaixa.DTOs;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
+using System;
 using System.Linq;
 
 namespace Repository
@@ -8,10 +9,21 @@ namespace Repository
     public class Mongo : IDataBase
     {
         private static IMongoCollection<LancamentoParaEnvio> collection;
+        private static DataBaseMinimalData dataBaseMinimalData;
 
-        public Mongo(IConfiguration configuration)
+        public Mongo(IConfiguration configuration, DataBaseMinimalData dataBaseMinimalDataArg)
         {
+            if (dataBaseMinimalDataArg.ConnectionString is null)
+                throw new Exception("A ConectionString não pode ser nula!");
+
+            if (dataBaseMinimalDataArg.DataBase is null)
+                throw new Exception("O DataBase não pode ser nulo!");
+
+            if (dataBaseMinimalDataArg.CollectionName is null)
+                throw new Exception("A CollectionName não pode ser nulo!");
+
             ConfigureDataBase(configuration);
+            dataBaseMinimalData = dataBaseMinimalDataArg;
         }
 
         public void Insert(LancamentoParaEnvio lancamentoParaEnvio)
@@ -36,15 +48,11 @@ namespace Repository
 
         private static void ConfigureDataBase(IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DataBase");
-            var dataBase = configuration.GetSection("DataBase:Name").Value;
-            var collectionName = configuration.GetSection("DataBase:CollectionName").Value;
+            var client = new MongoClient(dataBaseMinimalData.ConnectionString);
 
-            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(dataBaseMinimalData.DataBase);
 
-            var database = client.GetDatabase(dataBase);
-
-            collection = database.GetCollection<LancamentoParaEnvio>(collectionName);
+            collection = database.GetCollection<LancamentoParaEnvio>(dataBaseMinimalData.CollectionName);
         }  
     }
 }
