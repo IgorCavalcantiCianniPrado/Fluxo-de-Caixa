@@ -15,11 +15,11 @@ Para se rodar localmente este projeto, utilize o arquivo **docker-compose.yml**,
 **docker-compose up**
 
 Após a execução do comando, os seguintes serviços devem ficar de pé:
-- fluxocaixaapiservice (api para postar os lançamentos de crédito e débito no Message Broker)
-- workerservice (serviço que consome do Message Broker os lançamentos e registra no Banco de Dados)
-- relatorioservice (serviço que exibe o saldo atual com base nos lançamentos no Banco de Dados)
-- rabbitmqservice (Message Broker)
-- mongodbservice (Banco de Dados)
+- **fluxocaixaapiservice** (api para postar os lançamentos de crédito e débito no Message Broker)
+- **workerservice** (serviço que consome do Message Broker os lançamentos e registra no Banco de Dados)
+- **relatorioservice** (serviço que exibe o saldo atual com base nos lançamentos no Banco de Dados)
+- **rabbitmqservice** (Message Broker)
+- **mongodbservice** (Banco de Dados)
 
 
 # Testar o Funcionamento do Sistema
