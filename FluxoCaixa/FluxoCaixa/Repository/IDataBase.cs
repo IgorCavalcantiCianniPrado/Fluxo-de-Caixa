@@ -1,4 +1,4 @@
-﻿using FluxoCaixa.DTOs;
+﻿using Infraestrutura.DTOs;
 
 namespace Repository
 {
