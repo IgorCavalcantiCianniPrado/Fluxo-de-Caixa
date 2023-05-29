@@ -1,8 +1,7 @@
-using FluxoCaixa.DTOs;
-using FluxoCaixa.Enums;
-using FluxoCaixa.Factories;
-using FluxoCaixa.MessageBroker;
-using Microsoft.Extensions.Configuration;
+using Infraestrutura.DTOs;
+using Infraestrutura.Enums;
+using Infraestrutura.Factories;
+using MessageBroker.Publisher;
 using NUnit.Framework;
 using Repository;
 using System;

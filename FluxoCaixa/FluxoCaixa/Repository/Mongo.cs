@@ -1,4 +1,4 @@
-﻿using FluxoCaixa.DTOs;
+﻿using Infraestrutura.DTOs;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System;
@@ -13,19 +13,24 @@ namespace Repository
 
         public Mongo(IConfiguration configuration, DataBaseMinimalData dataBaseMinimalDataArg)
         {
-            if (dataBaseMinimalDataArg.ConnectionString is null)
-                throw new Exception("A ConectionString não pode ser nula!");
-
-            if (dataBaseMinimalDataArg.DataBase is null)
-                throw new Exception("O DataBase não pode ser nulo!");
-
-            if (dataBaseMinimalDataArg.CollectionName is null)
-                throw new Exception("A CollectionName não pode ser nulo!");
+            InitialValidation(dataBaseMinimalDataArg);
 
             dataBaseMinimalData = dataBaseMinimalDataArg;
 
             ConfigureDataBase(configuration);
             
+        }
+
+        private void InitialValidation(DataBaseMinimalData dataBaseMinimalData)
+        {
+            if (dataBaseMinimalData.ConnectionString is null)
+                throw new Exception("A ConectionString não pode ser nula!");
+
+            if (dataBaseMinimalData.DataBase is null)
+                throw new Exception("O DataBase não pode ser nulo!");
+
+            if (dataBaseMinimalData.CollectionName is null)
+                throw new Exception("A CollectionName não pode ser nulo!");
         }
 
         public void Insert(LancamentoParaEnvio lancamentoParaEnvio)

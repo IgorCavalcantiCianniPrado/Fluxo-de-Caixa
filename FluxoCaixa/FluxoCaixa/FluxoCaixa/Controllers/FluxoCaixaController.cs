@@ -1,7 +1,7 @@
-﻿using FluxoCaixa.DTOs;
-using FluxoCaixa.Factories;
-using FluxoCaixa.MessageBroker;
-using FluxoCaixa.Model;
+﻿using Infraestrutura.DTOs;
+using Infraestrutura.Factories;
+using MessageBroker.Publisher;
+using Infraestrutura.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

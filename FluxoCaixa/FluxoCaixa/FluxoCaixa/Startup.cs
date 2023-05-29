@@ -1,5 +1,5 @@
 using EasyNetQ;
-using FluxoCaixa.MessageBroker;
+using MessageBroker.Publisher;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

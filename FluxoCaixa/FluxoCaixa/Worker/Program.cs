@@ -2,9 +2,9 @@ using EasyNetQ;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Worker.MessageBroker;
+using MessageBroker.Consumer;
 using Repository;
-using FluxoCaixa.DTOs;
+using Infraestrutura.DTOs;
 
 namespace Worker
 {

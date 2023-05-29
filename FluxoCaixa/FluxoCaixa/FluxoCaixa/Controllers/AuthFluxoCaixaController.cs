@@ -1,4 +1,4 @@
-﻿using FluxoCaixa.Model;
+﻿using Infraestrutura.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
