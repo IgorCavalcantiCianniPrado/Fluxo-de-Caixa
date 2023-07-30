@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluxo-caixa-relatorios-deployment
+  namespace: fluxocaixa
+  labels:
+    app: fluxo-caixa-relatorios-deployment-label
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: fluxo-caixa-relatorios-pod
+      labels:
+        app: fluxo-caixa-relatorios-label
+    spec:
+      containers:
+        - name: fluxo-caixa-relatorios-container
+          image: igorcavalcanticianniprado/fluxo-caixa-relatorio:v1
+          env:
+            - name: ConnectionStrings__DataBase
+              value: mongodb://mongo
+            - name: DataBase__Name
+              value: FluxoCaixa 
+            - name: DataBase__CollectionName
+              value: CreditoDebito
+            - name: Jwt__Key
+              value: '12344567654325676'  
+            - name: Jwt__Issuer
+              value: AlgumIssuer
+            - name: Jwt__Audience
+              value: AlgumaAudience 
+            - name: Login__Usuario
+              value: IgorPrado
+            - name: Login__Senha
+              value: '123456'
+  selector:
+    matchLabels:
+      app: fluxo-caixa-relatorios-label

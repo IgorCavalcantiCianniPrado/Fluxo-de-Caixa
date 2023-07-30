@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: fluxocaixa
+spec:
+  selector:
+    app: rabbitmq-pod-label
+  ports:
+    - name: http
+      port: 15672
+      nodePort: 30084
+    - name: http2
+      port: 5672
+      nodePort: 30085
+  type: NodePort

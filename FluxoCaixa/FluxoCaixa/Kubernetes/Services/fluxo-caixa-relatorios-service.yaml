@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluxo-caixa-relatorios-service
+  namespace: fluxocaixa
+spec:
+  selector:
+    app: fluxo-caixa-relatorios-label
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30081
+  type: NodePort

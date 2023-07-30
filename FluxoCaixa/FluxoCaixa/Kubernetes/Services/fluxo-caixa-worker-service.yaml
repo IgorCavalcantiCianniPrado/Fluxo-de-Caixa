@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluxo-caixa-worker-service
+  namespace: fluxocaixa
+spec:
+  selector:
+    app: fluxo-caixa-worker-label
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30082
+  type: NodePort

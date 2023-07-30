@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-deployment
+  namespace: fluxocaixa
+  labels:
+    app: rabbitmq-deployment-label
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: rabbitmq-pod
+      labels:
+        app: rabbitmq-pod-label
+    spec:
+      containers:
+        - name: rabbitmq-container
+          image: rabbitmq:3-management
+  selector:
+    matchLabels:
+      app: rabbitmq-pod-label

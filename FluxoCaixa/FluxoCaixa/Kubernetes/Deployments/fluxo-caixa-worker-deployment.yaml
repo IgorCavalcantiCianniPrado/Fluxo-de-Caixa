@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluxo-caixa-worker-deployment
+  namespace: fluxocaixa
+  labels:
+    app: fluxo-caixa-worker-deployment-label
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: fluxo-caixa-worker-pod
+      labels:
+        app: fluxo-caixa-worker-label
+    spec:
+      containers:
+        - name: fluxo-caixa-worker-container
+          image: igorcavalcanticianniprado/fluxo-caixa-worker:v1
+          env:
+            - name: ConnectionStrings__MessageBroker
+              value: host=rabbitmq
+            - name: ConnectionStrings__DataBase
+              value: mongodb://mongo
+            - name: DataBase__Name
+              value: FluxoCaixa
+            - name: DataBase__CollectionName
+              value: CreditoDebito
+  selector:
+    matchLabels:
+      app: fluxo-caixa-worker-label

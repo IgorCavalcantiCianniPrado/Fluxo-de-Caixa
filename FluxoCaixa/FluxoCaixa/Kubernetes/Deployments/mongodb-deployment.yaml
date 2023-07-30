@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  namespace: fluxocaixa
+  labels:
+    app: mongodb-deployment-label
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: mongodb-pod
+      labels:
+        app: mongodb-pod-label
+    spec:
+      containers:
+        - name: mongodb-container
+          image: mongo
+  selector:
+    matchLabels:
+      app: mongodb-pod-label
