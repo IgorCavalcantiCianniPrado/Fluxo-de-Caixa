@@ -1,5 +1,5 @@
-# CaseMttechne
-Projeto que tem como objetivo realizar um case técnico da empresa **Mttechne**. 
+# Fluxo de Caixa
+Projeto que tem como objetivo realizar um projeto de Fluxo de Caixa de um tipo de empório. 
 
 A ideia neste case é basicamente (considerando as instruções do mesmo e minha "liberdade de criação") ter um sistema básico de um empório que vende Cervejas e Vinhos, de maneira que eu registro cada lançamento realizado como um Crédito (venda, que resulta em entrada de dinheiro) ou como um Débito (compra, que resulta em saída de dinheiro).
 
